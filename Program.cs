@@ -1,4 +1,24 @@
-﻿                                        List<Monster> monsterList = new List<Monster>(){new Monster("Gromp", 100, false),
+﻿
+
+string[] techniques = { "   C#", "daTAbaser", "WebbuTVeCkling ", "clean Code   " };
+
+string kurser = "";
+
+string courseGenerator(string[] techniques)
+{
+    foreach (string technique in techniques)
+    {
+        string tmp = technique.Trim();
+        kurser += "<p>" + tmp[0].ToString().ToUpper() +
+        tmp.Substring(1).ToLower() + "</p>\n";
+    }
+    return kurser;
+}
+
+//Diskutera hur det ska gå till och skriv om denna så att
+//den använder en Aggregator.
+
+//string[] newArray = techniques.Aggregate("", (test, next) => next.Trim()List<Monster> monsterList = new List<Monster>(){new Monster("Gromp", 100, false),
                                                 new Monster("Cranky", 120, true),
                                                 new Monster("CoffeeSpiller", 35, false)};
       //1.Använd SELECT och FOREACH för att skriva ut alla namn på monstrena (det är en bra
@@ -83,3 +103,8 @@ class Monster
         this.isDead = isDead;
     }
 }
+
+
+
+
+
