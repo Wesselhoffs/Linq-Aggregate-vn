@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-string[] techniques = { "   C#", "daTAbaser", "WebbuTVeCkling ", "clean Code   " };
+﻿string[] techniques = { "   C#", "daTAbaser", "WebbuTVeCkling ", "clean Code   " };
 
 string kurser = "";
 kurser = courseGenerator(techniques);
@@ -22,13 +20,47 @@ Console.WriteLine("----------------------------------");
 //den använder en Aggregator.
 
 
-string fixedTechniques = techniques.Aggregate("", (a, b) =>
+string fixedTechniques = techniques.Aggregate("", (result, next) =>
 {
-    b = b.Trim();
-    b = "<p>" + b[0].ToString().ToUpper() + b.Substring(1).ToLower() + "</p>\n";
-    return a + b;
-});Console.WriteLine(fixedTechniques);Console.WriteLine("----------------------------------");
-List<Monster> monsterList = new List<Monster>(){new Monster("Gromp", 100, false),
+    next = next.Trim();
+    next = "<p>" + next[0].ToString().ToUpper() + next.Substring(1).ToLower() + "</p>\n";
+    return result + next;
+});Console.WriteLine(fixedTechniques);
+
+//##################################################################################################################
+
+Console.WriteLine("----------------------------------");
+string className = ".NET 2022 Distans";
+string[] messagesToClass = { "Glöm inte att övning ger färdighet!", "Öppna boken på sida 257." };
+
+Console.WriteLine(printWelcome(className, messagesToClass));
+
+string printWelcome(string className, string[] message)
+{
+    string welcome = $"<h1> Välkomna {className}! </h1>";
+    string welcomeMessage = "";
+    foreach (string msg in message)
+    {
+        welcomeMessage +=
+        $"\n<p><b> Meddelande: </b> {msg} </p>";
+    }
+    return welcome + welcomeMessage;
+}Console.WriteLine("----------------------------------");
+//Diskutera hur det ska gå till och skriv om denna så att
+//den använder en Aggregator.
+
+string aggregatedMessageToClass = messagesToClass.Aggregate($"<h1> Välkomna {className}! </h1>", (result, next) =>
+{
+    next = $"\n<p><b> Meddelande: </b> {next} </p>";
+    return result + next;
+});
+Console.WriteLine(aggregatedMessageToClass);
+
+Console.WriteLine("----------------------------------");
+
+//##################################################################################################################
+
+List<Monster> monsterList = new List<Monster>(){new Monster("Gromp", 100, false),
                                                 new Monster("Cranky", 120, true),
                                                 new Monster("CoffeeSpiller", 35, false)};
 
